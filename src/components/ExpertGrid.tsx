@@ -1,7 +1,15 @@
 import React from 'react';
 import ExpertCard from './ExpertCard';
 
-const experts = [
+interface Expert {
+  name: string;
+  specialty: string;
+  status: 'Çevrimiçi' | 'Meşgul';
+  rating: number;
+  imageUrl: string;
+}
+
+const experts: Expert[] = [
   { name: 'Dr. Elara', specialty: 'Kuantum Fizik Uzmanı', status: 'Çevrimiçi', rating: 4.9, imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBkMM3zxYdJqp7lpKSkzBc-7OweOWSbMHk99DOk5Rzta-LFsTk3C_ZFH_PcaGewRYZ87ePh696OMXvauZcxwl3njVPXWQXCf131Sv6ROyjF_u4j8tJ6xaeO9yH9bApXBg2GXQu7KFqCLhwoUfmZMaBttLLOSpbrP7oLHcMU7yDGqbGPVF_lDPd4-3NVl-PuBKufxT9-iSmYSfWc--tYSgbE-k3POL6ygkanNWkIr5AZp1QR_PZkzd5_WDcV3a35vPo1mp_bUvoUcy8' },
   { name: 'Alex Reed', specialty: 'Yatırım Stratejileri', status: 'Çevrimiçi', rating: 4.8, imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCkNKHnfAa5WMyyDF1WLSjSrz1YiXi7o7J4LPHPwtQsAiCWfYx6yp7iDy6H81DVAx7FgyTB3Z9Fg6fcMIBm21xUospXpt-3vrnSFVlZzpFGJGqiB9P2KBrE__txI94UIJitxiSACTjEvs4XcfXmNKPPZMuYQSODjvQSqsOUCngmlAHmtbLPf3N2FyP0aVquiCUE9do-ulA8j5MKH0obySc5q8bfGMEAHyjktXATSpU-GEZciHxZua_n6AhRHBIeypNdVj-FsMvwuyg' },
   { name: 'Dr. Anya Sharma', specialty: 'Biyoteknoloji Danışmanı', status: 'Meşgul', rating: 4.9, imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAi9U39FgbPYASMUfmusIQJCKRnoSftRo5vSJsvS8bk7-93zoX-KTkPn8j-zfZHUmZZiWpZI3R0s3e7Y535jsO6s8qns0vteGBKCMu_utR6Ens5myPsPhuPuJR-Wym48emLvJpSLQQ5nf2UZ_3xYf_biQzMTsx7if92icVCvmt2kYbC268KFtpA12cMzvVompIJ4TDtcsIW9A2d8moCGvWzCLFddaMfl5cnC8POw-0BjYYErIXwfopT1YHMN5CgGwSjOWOb6YtUSgI' },
