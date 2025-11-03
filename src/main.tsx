@@ -9,6 +9,7 @@ import VideoCallPage from './pages/VideoCallPage';
 import UserProfilePage from './pages/UserProfilePage';
 import ExpertProfilePage from './pages/ExpertProfilePage';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginPage />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
   },
   {
     path: '/dashboard',

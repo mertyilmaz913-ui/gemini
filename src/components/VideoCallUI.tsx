@@ -1,49 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+const MockTranscript: React.FC = () => (
+  <>
+    <div className="mb-4">
+      <p className="font-bold text-brand-gold">AI Psikolog</p>
+      <p className="text-white/90">
+        Merhaba, bugünkü seansımıza hoş geldiniz. Sizi dinliyorum, nasılsınız?
+      </p>
+    </div>
+    <div className="mb-4">
+      <p className="font-bold text-white">Siz</p>
+      <p className="text-white/90">
+        Merhaba, teşekkür ederim. Son zamanlarda biraz bunalmış hissediyorum. İş
+        yerindeki baskı oldukça arttı.
+      </p>
+    </div>
+    <div>
+      <p className="font-bold text-brand-gold">AI Psikolog</p>
+      <p className="text-white/90">
+        Anlıyorum. Bu baskının kaynağı hakkında biraz daha detay verebilir
+        misiniz? Belki birlikte çözüm yolları bulabiliriz.
+      </p>
+    </div>
+  </>
+);
 
 const VideoCallUI: React.FC = () => {
+  const [isTranscriptVisible, setIsTranscriptVisible] = useState(false);
+
   return (
-    <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden">
+    <div className="relative flex h-screen w-full overflow-hidden">
       {/* Main Video Stream (AI Avatar) */}
-      <div className="absolute inset-0 z-0 h-full w-full bg-cover bg-center" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCNZWSHL-3LneR_e7QD5BlHxh6e1jW0SsvbqKa-s67nc9WlSJEHgZu1KeP44n2svhtIpwVwXhPE_Q93XUnPlgILrhRQomQRVm0LjhGbtKnkYKRH6oJTbTLJnnMArVdYlofwK-PQZxo3C8qo3DYkaTl4jIQZJ8y0kViI7Ymc6PcVkTOCmjaV_3Xhz6PF88oOu4Y6BSixjxkfhWrAMY22Cm_XeB6Evi3YZ5fUbnKTGmlfDwtegNJkkiwzJ7l7t0WSaahaOjxjoZLpRnM')"}}>
+      <div className="flex-grow h-full bg-cover bg-center transition-all duration-300" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCNZWSHL-3LneR_e7QD5BlHxh6e1jW0SsvbqKa-s67nc9WlSJEHgZu1KeP44n2svhtIpwVwXhPE_Q93XUnPlgILrhRQomQRVm0LjhGbtKnkYKRH6oJTbTLJnnMArVdYlofwK-PQZxo3C8qo3DYkaTl4jIQZJ8y0kViI7Ymc6PcVkTOCmjaV_3Xhz6PF88oOu4Y6BSixjxkfhWrAMY22Cm_XeB6Evi3YZ5fUbnKTGmlfDwtegNJkkiwzJ7l7t0WSaahaOjxjoZLpRnM')" }}>
         <div className="absolute inset-0 bg-black/30"></div>
       </div>
-      <div className="relative z-10 flex h-full w-full flex-col justify-between p-6 md:p-8 lg:p-10">
-        {/* Top Bar: Avatar Info & Timer */}
-        <div className="flex items-start justify-between">
-          <div className="rounded-lg bg-black/40 p-4 backdrop-blur-sm">
-            <h1 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] font-display">Dr. Ada Lovelace</h1>
-            <p className="text-white/80 text-base font-normal leading-normal font-display">Finans Uzmanı</p>
-          </div>
-          <div className="flex items-center gap-2 rounded-lg bg-black/40 px-4 py-2 backdrop-blur-sm">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-            </span>
-            <p className="text-white text-base font-bold leading-tight tracking-[-0.015em] font-display">12:34</p>
-          </div>
+
+      {/* Transcript Sidebar */}
+      <div className={`w-96 bg-brand-dark/80 backdrop-blur-md transition-all duration-300 ease-in-out ${isTranscriptVisible ? 'ml-0' : '-ml-96'}`}>
+        <div className="p-6 h-full overflow-y-auto">
+          <h2 className="text-xl font-bold text-white mb-6">Canlı Transkript</h2>
+          <MockTranscript />
         </div>
-        {/* Bottom Section: User Video and Controls */}
-        <div className="flex w-full flex-col items-center gap-6">
-          {/* User Video (Picture-in-Picture) */}
-          <div className="ml-auto h-40 w-64 self-end overflow-hidden rounded-xl border-2 border-white/20 shadow-lg md:h-48 md:w-80">
-            <img className="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA5kUJV1UYXtwBFsELXzXfcUnE36eYwGhnazldTNezj-46tds9Wo-FQnpN7tJPQwTauEDH4k9qVki95sP1_7A-uLlPm_zUC7ZNS23tMDSEit3joUT7U8lKhKTu-u3pylJMC5mxgX3VBmCrKbIENHpJZzVNh4Kwutfdm38rtax-_Kt2_x95-_t9_QTZLm4RUMzYk3M8cc8vHiOXM0S3HZjQWJh2w9WEJgD_XDSwew_K0NKDdSbKk-vJUl22Fxzb427XbcR1bWZScOw" alt="User's video feed during the call."/>
-          </div>
-          {/* Control Toolbar */}
-          <div className="flex items-center justify-center gap-2 rounded-full bg-black/50 p-3 backdrop-blur-md">
-            <button className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20" onClick={() => {}}>
-              <span className="material-symbols-outlined">mic</span>
-            </button>
-            <button className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20" onClick={() => {}}>
-              <span className="material-symbols-outlined">videocam</span>
-            </button>
-            <button className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20" onClick={() => {}}>
-              <span className="material-symbols-outlined">screen_share</span>
-            </button>
-            <div className="mx-2 h-6 w-px bg-white/20"></div>
-            <button className="flex h-12 w-12 items-center justify-center rounded-full bg-[#D9534F] text-white transition-transform hover:scale-105" onClick={() => {}}>
-              <span className="material-symbols-outlined">call_end</span>
-            </button>
-          </div>
+      </div>
+
+      {/* Controls */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+        <div className="flex items-center justify-center gap-4 rounded-full bg-black/50 p-3 backdrop-blur-md">
+          <button className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20">
+            {/* Mute Icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
+          </button>
+          <button className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20">
+            {/* Camera Off Icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.55a2.5 2.5 0 01.955 1.888V17a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h4.112A2.5 2.5 0 0113.45 4.955L15 10z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M1 1l22 22" /></svg>
+          </button>
+           <button onClick={() => setIsTranscriptVisible(!isTranscriptVisible)} className={`flex h-12 w-12 items-center justify-center rounded-full text-white transition-colors ${isTranscriptVisible ? 'bg-brand-gold/80' : 'bg-white/10 hover:bg-white/20'}`}>
+            {/* Transcript Icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+          </button>
+          <div className="mx-2 h-6 w-px bg-white/20"></div>
+          <button className="flex h-14 w-28 items-center justify-center rounded-full bg-brand-gold text-brand-dark font-bold transition-transform hover:scale-105">
+            Görüşmeyi Bitir
+          </button>
         </div>
       </div>
     </div>

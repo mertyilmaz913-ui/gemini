@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HeroSection: React.FC = () => {
   return (
@@ -14,10 +15,13 @@ const HeroSection: React.FC = () => {
                 Gerçek zamanlı görüntülü görüşme ile yapay zeka uzman avatarlarıyla anında bağlantı kurun ve sorularınıza yanıt bulun.
               </h2>
             </div>
-            <div className="flex justify-center @[960px]:justify-start">
-              <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-background-dark text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors" onClick={() => {}}>
-                <span className="truncate">Hemen Deneyin</span>
-              </button>
+            <div className="flex flex-col gap-4 sm:flex-row justify-center @[960px]:justify-start">
+              <Link to="/login" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-brand-gold text-brand-dark text-base font-bold leading-normal tracking-[0.015em] hover:bg-yellow-400 transition-colors">
+                <span className="truncate">Giriş Yap</span>
+              </Link>
+              <Link to="/register" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 border border-brand-gold text-brand-gold text-base font-bold leading-normal tracking-[0.015em] hover:bg-brand-gold hover:text-brand-dark transition-colors">
+                <span className="truncate">Hemen Başla</span>
+              </Link>
             </div>
           </div>
           <div className="w-full @[960px]:flex-1">
